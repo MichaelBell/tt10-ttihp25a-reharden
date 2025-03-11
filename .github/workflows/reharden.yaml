@@ -84,13 +84,13 @@ jobs:
             exit 1
           fi
 
-      #- name: Publish build logs
-      #  #if: success() || failure()
-      #  uses: actions/upload-artifact@v4
-      #  with:
-      #    name: GDS_${{ matrix.project }}
-      #    path: |
-      #      hdl/${{ matrix.project }}/runs/*
+      - name: Publish build logs
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: GDS_${{ matrix.project }}
+          path: |
+            hdl/${{ matrix.project }}/runs/*
 
       - name: Install KLayout
         shell: bash
